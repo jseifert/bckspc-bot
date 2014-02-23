@@ -41,7 +41,7 @@ sanitize = T.map toLower . dropAround (not . isLetter)
 avoidHighlighting :: Text -> Text
 avoidHighlighting nick = maybe nick insertUnicode $ T.uncons nick
   where
-    insertUnicode (c,cs) = c `T.cons` '\8288' `T.cons` cs
+    insertUnicode (c,cs) = c `T.cons` '\STX\STX' `T.cons` cs
 
 
 broadcast :: Text -> Text -> IO ()
